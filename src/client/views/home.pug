@@ -1,0 +1,23 @@
+html
+    head
+
+    body
+        h1 Welcome to spreadsheet!
+
+        form(action='/api/v1/sheets/abc123', method='POST')
+          table(style='width:100%', border='1')
+            tr
+              th= " "
+              each colHeader in colHeaders
+                th= colHeader
+
+            each rowHeader, rIndex in rowHeaders
+              tr
+                each cellValue, colIndex in data[rIndex]
+                  if colIndex == 0
+                    td= rowHeader
+                    td
+                      input(type='text', name=rowHeader + colIndex, value=cellValue)
+                  else
+                    td
+                      input(type='text', name=rowHeader + colIndex, value=cellValue)
